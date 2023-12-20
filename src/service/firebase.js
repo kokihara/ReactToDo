@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, Settings } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 //Googleログイン認証機能
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -21,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig); // Firebaseアプリを初期化
 
 export const db = getFirestore(app); // Firestoreのdbのインスタンスを作成
+db.enablePersistence();
 
 //Googleログイン認証機能
 const provider = new GoogleAuthProvider();
