@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import dig from "object-dig";
-import { signInWithGoogle, logOut } from "../service/firebase";
-import { AuthContext } from "../providers/Authprovider";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import dig from "object-dig"; // オブジェクトのプロパティを安全に取得する関数をインポート
+import { signInWithGoogle, logOut } from "../service/firebase"; // Firebase関連のユーティリティをインポート
+import { AuthContext } from "../providers/Authprovider"; // 認証コンテキストをインポート
+import AppBar from "@mui/material/AppBar"; // Material-UIのAppBarコンポーネントをインポート
+import Box from "@mui/material/Box"; // Material-UIのBoxコンポーネントをインポート
+import Toolbar from "@mui/material/Toolbar"; // Material-UIのToolbarコンポーネントをインポート
+import Typography from "@mui/material/Typography"; // Material-UIのTypographyコンポーネントをインポート
+import Button from "@mui/material/Button"; // Material-UIのButtonコンポーネントをインポート
+import { styled } from "@mui/material/styles"; // Material-UIのスタイル付け機能をインポート
 
+// Material-UIのスタイリングを適用したButtonコンポーネントを作成
 const HeaderButton = styled(Button)({
   fontSize: "18px",
   fontWeight: "bold",
@@ -16,7 +17,7 @@ const HeaderButton = styled(Button)({
 
 // ヘッダーに関するパーツ
 const Header = () => {
-  const currentUser = useContext(AuthContext);
+  const currentUser = useContext(AuthContext); // 認証コンテキストからユーザー情報を取得
   console.log(currentUser); // ユーザー情報をログとして出力
 
   // ボタンをレンダリングする関数
@@ -44,11 +45,17 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography fontSize="24px">ReactToDO</Typography>
-        {/* ログインボタンをクリックした際に、【signInWithGoogle】が発生する。 */}
+        {/* ログインボタンをクリックした際に【signInWithGoogle】が発生する */}
         {buttonRender()}
       </Toolbar>
     </AppBar>
   );
 };
 
-export default Header; // インポートするようにする。これがないと、呼び出せない。
+export default Header; // Headerコンポーネントをエクスポートする
+
+// このコードは、Reactアプリのヘッダー部分を構築するコンポーネントです。
+// Material-UIのコンポーネントを使用して、
+// アプリ名の表示とログイン/ログアウトのボタンを提供しています。
+// AuthContextを使用してユーザーのログイン状態を取得し、
+// その状態に応じてログインボタンまたはログアウトボタンを表示するようにしています。
